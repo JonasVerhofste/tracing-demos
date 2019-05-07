@@ -1,4 +1,13 @@
 {
+    "apache/thrift": {
+        "version": "0.11.0"
+    },
+    "cache/adapter-common": {
+        "version": "1.1.0"
+    },
+    "cache/tag-interop": {
+        "version": "1.0.0"
+    },
     "composer/ca-bundle": {
         "version": "1.x-dev"
     },
@@ -128,6 +137,15 @@
     "ocramius/proxy-manager": {
         "version": "2.1.x-dev"
     },
+    "opencensus/opencensus": {
+        "version": "v0.5.2"
+    },
+    "opencensus/opencensus-exporter-jaeger": {
+        "version": "v0.1.1"
+    },
+    "opencensus/opencensus-exporter-zipkin": {
+        "version": "v0.1.0"
+    },
     "pagerfanta/pagerfanta": {
         "version": "v2.0.1"
     },
@@ -148,6 +166,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.x-dev"
+    },
+    "ramsey/uuid": {
+        "version": "3.8.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
