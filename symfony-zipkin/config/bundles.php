@@ -19,4 +19,6 @@ return [
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     HtmlSanitizer\Bundle\HtmlSanitizerBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    ZipkinBundle\ZipkinBundle::class => ['all' => true],
+    ZipkinDoctrine\Integrations\Symfony\Bundle::class => ['all' => true],
 ];

@@ -5,6 +5,8 @@ parameters:
     # This parameter defines the codes of the locales (languages) enabled in the application
     app_locales: en|fr|de|es|cs|nl|ru|uk|ro|pt_BR|pl|it|ja|id|ca|sl|hr|zh_CN|bg|tr|lt
     app.notifications.email_sender: anonymous@example.com
+    doctrine.tracer.zipkin.options:
+      - 'affected_rows': true
 
 services:
     # default configuration for services in *this* file
@@ -32,3 +34,38 @@ services:
     # 'arguments' key and define the arguments just below the service class
     App\EventSubscriber\CommentNotificationSubscriber:
         $sender: '%app.notifications.email_sender%'
+
+    zipkin.span_customizer.by_path_namer:
+        class: ZipkinBundle\SpanCustomizers\ByPathNamer\SpanCustomizer
+        factory: [ZipkinBundle\SpanCustomizers\ByPathNamer\SpanCustomizer, 'create']
+        arguments:
+          - '%kernel.cache_dir%'
+    
+    zipkin.span_customizer.by_path_namer.cache_warmer:
+      class: ZipkinBundle\SpanCustomizers\ByPathNamer\CacheWarmer
+      arguments:
+        - "@router"
+      tags:
+        - { name: kernel.cache_warmer, priority: 0 }
+    
+    tracing_middleware:
+      class: ZipkinBundle\Middleware
+      arguments:
+        - "@zipkin.default_tracing"
+        - "@logger"
+        - { instance: 'localhost-server' }
+        - "@zipkin.span_customizer.by_path_namer"
+      tags:
+        - { name: kernel.event_listener, event: kernel.request, priority: 256 }
+        - { name: kernel.event_listener, event: kernel.terminate }
+        - { name: kernel.event_listener, event: kernel.exception }
+
+zipkin:
+  noop: false
+  service_name: symony-zipkin
+  sampler:
+    type: always
+  reporter:
+    type: http
+    http:
+      endpoint_url: http://localhost:9411/api/v2/spans
