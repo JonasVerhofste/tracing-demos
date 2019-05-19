@@ -121,6 +121,13 @@
     "@angular-devkit/core" "7.3.9"
     rxjs "6.3.3"
 
+"@angular-tracing/zipkin@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@angular-tracing/zipkin/-/zipkin-0.0.14.tgz#41f1342c92546212099894337b31a97501200d17"
+  integrity sha512-tOYZLvSsuRqJhmKSeYonvD8hO5tK505WaTfbPpLAXEyobJvX7G6dFeKLgnPbRaFKFTKOxEpZB4A5Fmhs7sVO7Q==
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/animations@^7.1.0":
   version "7.2.15"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-7.2.15.tgz#980c1f523a79d4b7cb44508f57fba06f2e0872fa"
@@ -1007,7 +1014,7 @@ base64-arraybuffer@0.1.5:
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz#73926771923b5a19747ad666aa5cd4bf9c6e9ce8"
   integrity sha1-c5JncZI7Whl0etZmqlzUv5xunOg=
 
-base64-js@^1.0.2:
+base64-js@^1.0.2, base64-js@^1.1.2:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
   integrity sha512-ccav/yGvoa80BQDljCxsmmQ3Xvx60/UpBIij5QN21W3wBi/hhIC9OoO+KLpu9IJTS9j4DRVJ3aDDF9cMSoa2lw==
@@ -2196,6 +2203,11 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
+
+empty-module@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/empty-module/-/empty-module-0.0.2.tgz#13b4dd8d4afeddd35e50c18dcd788c51087f1545"
+  integrity sha1-E7TdjUr+3dNeUMGNzXiMUQh/FUU=
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -4549,6 +4561,11 @@ node-fetch-npm@^2.0.2:
     encoding "^0.1.11"
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
+
+node-fetch@^2.3.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
+  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
 node-forge@0.7.5:
   version "0.7.5"
@@ -7422,6 +7439,21 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
   integrity sha1-5a2ryKz0CPY4X8dklWhMiOavaJo=
+
+zipkin-transport-http@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/zipkin-transport-http/-/zipkin-transport-http-0.17.1.tgz#9b16aa34bfe96eec076f52634be3d6f932c3c112"
+  integrity sha512-qdDGbLoIIJhiC2QHOKkcHnI36T2p88zpgWeLDSggqRPYlLO0rxdFU8wfRJvk/RsMK2BuzS1S/pkZiOWCDc0QUA==
+  dependencies:
+    node-fetch "^2.3.0"
+
+zipkin@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/zipkin/-/zipkin-0.17.1.tgz#12556afa86ba2ee11d83f285ebf08f4faa28ce38"
+  integrity sha512-s/A1d11fdgwnIX47jmaCwWCtHl2kCJwxW3dAnT8pS3NDZF02P+lS+dzGCO/OKToT/cnFiOzZ2by92SjwgEXUfg==
+  dependencies:
+    base64-js "^1.1.2"
+    is-promise "^2.1.0"
 
 zone.js@~0.8.26:
   version "0.8.29"

@@ -15,6 +15,27 @@ import { HeroesComponent }      from './heroes/heroes.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { MessagesComponent }    from './messages/messages.component';
 
+import { TRACE_MODULE_CONFIGURATION, ZipkinModule } from '@angular-tracing/zipkin';
+import { sampler } from 'zipkin';
+import Sampler = sampler.Sampler;
+
+export function getZipkinConfig() {
+  return {
+    traceProvider: {
+      http: {
+        remoteServiceMapping: {
+          routes: new RegExp('.*')
+        }
+      },
+      zipkinBaseUrl: 'http://localhost:9411',
+      // Any from https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/src/tracer/sampler.js can be used (see exports)
+      sampler: new Sampler(sampler.alwaysSample)
+    },
+    // Zipkin specific settings not available through angular-tracing go below, see https://github.com/openzipkin/zipkin-js/tree/master/packages/zipkin/
+    localServiceName: 'angular-demo',
+  }
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,7 +48,8 @@ import { MessagesComponent }    from './messages/messages.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    ZipkinModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -36,6 +58,9 @@ import { MessagesComponent }    from './messages/messages.component';
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent
+  ],
+  providers: [ 
+    { provide: TRACE_MODULE_CONFIGURATION, useFactory: getZipkinConfig }
   ],
   bootstrap: [ AppComponent ]
 })

@@ -2,6 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "node-fetch": [
+        "node_modules/empty-module/index.js"
+      ],
+      "os": [
+        "node_modules/empty-module/index.js"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
